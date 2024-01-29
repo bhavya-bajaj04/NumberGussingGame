@@ -1,195 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Guess The Number</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
-    <style>
-        body {
-            margin: 0px;
-            padding: 0px;
-            background-color: rgb(48, 4, 4);
-            color: white;
-            font-family: 'Josefin Sans', sans-serif;
-            font-size: 20px;
-            overflow: hidden;
-        }
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="final.css" />
+  </head>
 
-        .heading {
-            text-align: center;
-            margin: 50px 0 10px 0px;
-            padding: 10px 175px;
-            font-size: xx-large;
-        }
-
-        .container {
-            background-color: rgb(10, 10, 58);
-            border-radius: 8px;
-            width: 60%;
-            position: relative;
-            margin: 170px auto;
-            top: -160px;
-            height: 480px;
-            margin-bottom: -140px;
-        }
-
-        .item {
-            border-radius: 8px;
-            color: rgb(3, 3, 37);
-            background-color: goldenrod;
-            width: 55%;
-            position: relative;
-            margin: 10px auto;
-            text-align: center;
-            top: 20px;
-            padding: 6px;
-            width: 70%;
-        }
-
-        .btn {
-            align-items: center;
-            background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
-            border: 0;
-            border-radius: 6px;
-            box-shadow: rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, rgba(58, 65, 111, .5) 0 -3px 0 inset;
-            box-sizing: border-box;
-            color: #fff;
-            cursor: pointer;
-            display: inline-flex;
-            height: 48px;
-            justify-content: center;
-            padding-left: 16px;
-            padding-right: 16px;
-            position: relative;
-            text-align: left;
-            text-decoration: none;
-            transition: box-shadow .15s, transform .15s;
-            font-size: 18px;
-            width: 70%;
-        }
-
-        .btn:focus {
-            box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
-        }
-
-        .btn:hover {
-            box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
-            transform: translateY(-2px);
-        }
-
-        .btn:active {
-            box-shadow: #3c4fe0 0 3px 7px inset;
-            transform: translateY(2px);
-        }
-
-        #text-box {
-            text-align: center;
-            width: 200px;
-            height: 20px;
-            font-size: larger;
-            border: 4px orange inset;
-        }
-    </style>
-</head>
-
-<body>
+  <body>
     <header>
-        <div class="heading">
-            Welcome to <b> Guess the Number Game </b>
-        </div>
+      <div class="heading">Welcome to <b> Guess the Number Game </b></div>
     </header>
 
     <div class="container">
-        <div class="item">
-            <p>Highscore: <span class="highscore">0</span></p>
-            <button class="btn" role="button" id="new-game">New Game</button>
-            <p>Guesses Left: <span class="guesses-left">10</span></p>
-        </div>
+      <div class="item">
+        <p>Highscore: <span class="highscore">0</span></p>
+        <button class="btn" role="button" id="new-game">New Game</button>
+        <p>Guesses Left: <span class="guesses-left">10</span></p>
+      </div>
 
-        <div class="item">
-            <p>Enter your guess below (1 to 100) & press Check button</p>
-            <input type="number" id="text-box">
-            <br><br>
-            <button class="btn" role="button" id="check-btn">Check</button>
-        </div>
+      <div class="item">
+        <p>Enter your guess below (1 to 100) & press Check button</p>
+        <input type="number" id="text-box" />
+        <br /><br />
+        <button class="btn" role="button" id="check-btn">Check</button>
+      </div>
 
-        <div class="item">
-            <p class="message">Hello ! Let's Start the Game💖</p>
-        </div>
-
+      <div class="item">
+        <p class="message">Hello ! Let's Start the Game💖</p>
+      </div>
     </div>
-    <footer>
-        &copy; by BHAVYA. Don't claim as your own : )
-    </footer>
+    <footer>&copy; by BHAVYA. Don't claim as your own : )</footer>
 
-    <script>
-        const checkBtn = document.querySelector('#check-btn');
-        const newGameBtn = document.querySelector('#new-game');
-        const numberLabel = document.querySelector('#text-box');
-        const guessesLeftLabel = document.querySelector('.guesses-left');
-        const HighscoreLabel = document.querySelector('.highscore');
-        const messageLabel = document.querySelector('.message');
-
-        let actualNumber = null;
-        let guessesLeft = 10;
-        let highscore = 0;
-
-        const showMessage = mes => messageLabel.textContent = mes;
-
-        const startNewGame = function () {
-
-            actualNumber = Math.floor(Math.random() * 100) + 1;
-
-            guessesLeft = 10;
-            HighscoreLabel.textContent = highscore;
-            guessesLeftLabel.textContent = guessesLeft;
-            numberLabel.value = '';
-            showMessage("Hello ! Let's Start the Game💖");
-        }
-
-        const checkTheGuess = function () {
-
-            if (guessesLeft === 0) {
-                showMessage('Game Over 😣');
-                return;
-            }
-
-            if (numberLabel.value === '') {
-                showMessage('Enter a Number to Start 🤨');
-                return;
-            }
-
-            const guess = Number(numberLabel.value);
-
-            if (guess < 1 || guess > 100)
-                showMessage('Enter a Number Between 1 and 100 🙃');
-
-            else if (guess === actualNumber) {
-                showMessage('Congrats! You Guessed it 🏆');
-                if (guessesLeft > highscore) {
-                    highscore = guessesLeft;
-                    HighscoreLabel.textContent = highscore;
-                }
-            }
-
-            else {
-                showMessage(`Entered Number is ${guess > actualNumber ? 'Higher ⬆' : 'Lower ⬇'}`);
-
-                guessesLeft--;
-                guessesLeftLabel.textContent = guessesLeft;
-            }
-        }
-
-        checkBtn.addEventListener('click', checkTheGuess);
-        newGameBtn.addEventListener('click', startNewGame);
-        startNewGame();
-
-    </script>
-</body>
-
+    <script src="final.js"></script>
+  </body>
 </html>
